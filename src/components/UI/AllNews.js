@@ -55,7 +55,7 @@ const AllNews = ({ allNews }) => {
 								}}
 							>
 								{" "}
-								hello
+								
 							</div>
 
 							<p

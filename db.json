@@ -7,7 +7,7 @@
             "author": "Healthline",
             "release_date": "June 10, 2023",
             "category": "Health",
-            "comment_count": 5,
+            "comment_count": 110,
             "image_url": "/images/exercise_image.jpg"
         },
         {
@@ -17,7 +17,7 @@
             "author": "TechNews",
             "release_date": "June 12, 2023",
             "category": "Technology",
-            "comment_count": 10,
+            "comment_count": 95,
             "image_url": "/images/company_image.jpg"
         },
         {
@@ -27,7 +27,7 @@
             "author": "Space News Today",
             "release_date": "June 15, 2023",
             "category": "Space",
-            "comment_count": 15,
+            "comment_count": 85,
             "image_url": "/images/satellite_image.jpg"
         },
         {
@@ -37,7 +37,7 @@
             "author": "Mindfulness Magazine",
             "release_date": "June 16, 2023",
             "category": "Lifestyle",
-            "comment_count": 20,
+            "comment_count": 300,
             "image_url": "/images/meditation_image.jpg"
         }
     ]

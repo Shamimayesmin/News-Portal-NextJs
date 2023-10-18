@@ -4,6 +4,7 @@ import Banner from "@/components/UI/Banner";
 import AllNews from "@/components/UI/AllNews";
 
 
+
 const HomePage = ({allNews}) => {
   // console.log(allNews);
   return (

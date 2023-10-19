@@ -2,6 +2,12 @@ import RootLayout from "@/components/Layouts/RootLayout";
 import React from "react";
 import { Col, Row } from "antd";
 import Image from "next/image";
+import {
+	ArrowRightOutlined,
+	CalendarOutlined,
+	CommentOutlined,
+	ProfileOutlined,
+} from "@ant-design/icons";
 
 const NewsDetailPage = ({ news }) => {
 	return (
@@ -26,7 +32,46 @@ const NewsDetailPage = ({ news }) => {
 					</div>
 				</Col>
 				<Col className="gutter-row" span={12}>
-					<div>col-6</div>
+					<div>
+                        <h1 style={{fontSize: "30px", marginTop:"10px"}}>{news?.title}</h1>
+						{/* <Meta title={news?.title} /> */}
+						<div
+							className="line"
+							style={{
+								height: "5px",
+								margin: "20px 0",
+								background: "#000",
+								width: "100%",
+							}}
+						>
+							{" "}
+						</div>
+
+						<p
+							style={{
+								display: "flex",
+								justifyContent: "space-between",
+								width: "100%",
+								color: "gray",
+								margin: "10px 0px",
+								fontSize: "12px",
+							}}
+						>
+							<span>
+								<CalendarOutlined /> {news?.release_date}
+							</span>
+							<span>
+								<CommentOutlined /> {news?.comment_count} COMMENTS
+							</span>
+							<span>
+								<ProfileOutlined /> {news?.category}
+							</span>
+						</p>
+
+						<p style={{ fontSize: "20px" }}>
+							{news?.description}
+						</p>
+					</div>
 				</Col>
 			</Row>
 		</div>

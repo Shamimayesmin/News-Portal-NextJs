@@ -7,34 +7,39 @@ import {
 	CalendarOutlined,
 	CommentOutlined,
 	ProfileOutlined,
+	UserOutlined
 } from "@ant-design/icons";
 
 const NewsDetailPage = ({ news }) => {
+	if (!news) {
+		return <p>Loading.....</p>;
+	}
+
 	return (
 		<div>
-			<Row
-				gutter={{
-					xs: 8,
-					sm: 16,
-					md: 24,
-					lg: 32,
-				}}
-			>
-				<Col className="gutter-row" span={12}>
-					<div>
-						<Image
-							src={news?.image_url}
-							width={500}
-							height={300}
-							responsive
-							alt="news image"
-						/>
-					</div>
+			<Row style={{ marginTop: "80px", alignItems: "center" }}>
+				<Col md={6} lg={12}>
+					<Image
+						src={news?.image_url}
+						width={500}
+						height={300}
+						responsive
+						alt="news image"
+					/>
 				</Col>
-				<Col className="gutter-row" span={12}>
+				<Col md={6} lg={12} style={{ paddingRight: "20px" }}>
 					<div>
-                        <h1 style={{fontSize: "30px", marginTop:"10px"}}>{news?.title}</h1>
-						{/* <Meta title={news?.title} /> */}
+						<h1 style={{ fontSize: "30px" }}>{news?.title}</h1>
+
+						<span
+							style={{
+								color: "gray",
+								display: "block",
+								fontSize: "20px",
+							}}
+						>
+							<UserOutlined /> {news?.author}
+						</span>
 						<div
 							className="line"
 							style={{
@@ -68,9 +73,7 @@ const NewsDetailPage = ({ news }) => {
 							</span>
 						</p>
 
-						<p style={{ fontSize: "20px" }}>
-							{news?.description}
-						</p>
+						<p style={{ fontSize: "20px" }}>{news?.description}</p>
 					</div>
 				</Col>
 			</Row>
@@ -84,18 +87,19 @@ NewsDetailPage.getLayout = function getLayout(page) {
 	return <RootLayout>{page}</RootLayout>;
 };
 
-export const getStaticPaths = async () => {
-	const res = await fetch("http://localhost:5000/news");
-	const newses = await res.json();
+// export const getStaticPaths = async () => {
+// 	const res = await fetch("http://localhost:5000/news");
+// 	const newses = await res.json();
 
-	const paths = newses.map((news) => ({
-		params: { newsId: news.id },
-	}));
+// 	// build html data without showing loading state
+// 	const paths = newses.map((news) => ({
+// 		params: { newsId: news.id },
+// 	}));
 
-	return { paths, fallback: false };
-};
+// 	return { paths, fallback: false };
+// };
 
-export const getStaticProps = async (context) => {
+export const getServerSideProps = async (context) => {
 	const { params } = context;
 	const res = await fetch(`http://localhost:5000/news/${params.newsId}`);
 	const data = await res.json();

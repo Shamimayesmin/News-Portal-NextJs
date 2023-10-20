@@ -6,9 +6,11 @@ export default function App({ Component, pageProps }) {
 
   const getLayout = Component.getLayout || ((page) => page);
 
+  // return getLayout(<Component {...pageProps} />);
+
+  // for connected with redux RTK
+
   return (
-    <Provider store={store}>
-      {getLayout(<Component {...pageProps} />)}
-    </Provider>
-  )
+    <Provider store={store}>{getLayout(<Component {...pageProps} />)}</Provider>
+  );
 }

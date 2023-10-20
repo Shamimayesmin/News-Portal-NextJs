@@ -7,10 +7,19 @@ import {
 	CalendarOutlined,
 	CommentOutlined,
 	ProfileOutlined,
-	UserOutlined
+	UserOutlined,
 } from "@ant-design/icons";
+import { useGetSingleNewsQuery } from "@/redux/api/apiSlice";
+import { useRouter } from "next/router";
 
 const NewsDetailPage = ({ news }) => {
+	
+	// const router = useRouter();
+	// const { id } = router.query;
+
+	// const { data, isLoading, isError, error } = useGetSingleNewsQuery(id);
+	// console.log(data);
+
 	if (!news) {
 		return <p>Loading.....</p>;
 	}
@@ -87,6 +96,7 @@ NewsDetailPage.getLayout = function getLayout(page) {
 	return <RootLayout>{page}</RootLayout>;
 };
 
+// For Client side rendering(CSR) in next js
 // export const getStaticPaths = async () => {
 // 	const res = await fetch("http://localhost:5000/news");
 // 	const newses = await res.json();
@@ -99,8 +109,10 @@ NewsDetailPage.getLayout = function getLayout(page) {
 // 	return { paths, fallback: false };
 // };
 
+// for server side rendering (SSR) with json-server data
 export const getServerSideProps = async (context) => {
 	const { params } = context;
+
 	const res = await fetch(`http://localhost:5000/news/${params.newsId}`);
 	const data = await res.json();
 

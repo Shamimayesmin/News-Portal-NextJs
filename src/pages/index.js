@@ -11,7 +11,7 @@ const HomePage = ({allNews}) => {
 
   const {data, isLoading, isError} = useGetNewsesQuery();
 
-  console.log(data);
+  // console.log(data);
 
 
   const DynamicBanner = dynamic(() => import('@/components/UI/Banner'), {
@@ -60,12 +60,12 @@ HomePage.getLayout = function getLayout(page) {
 
 // for server side rendering (SSR) with json-server data
 export const getServerSideProps = async()=>{
-  const res = await fetch("http://localhost:5000/news");
+  const res = await fetch("http://localhost:3000/api/news");
   const data = await res.json();
-  // console.log(data);
+  console.log(data);
   return{
     props : {
-      allNews : data,
+      allNews : data.data,
     },
     
   }

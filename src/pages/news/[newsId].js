@@ -109,6 +109,8 @@ NewsDetailPage.getLayout = function getLayout(page) {
 // 	return { paths, fallback: false };
 // };
 
+
+
 // for server side rendering (SSR) with json-server data
 export const getServerSideProps = async (context) => {
 	const { params } = context;
